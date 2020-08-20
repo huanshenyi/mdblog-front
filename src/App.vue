@@ -15,9 +15,12 @@
 </template>
 
 <script>
-import { computed, reactive, toRefs } from 'vue';
+import { computed, reactive, toRefs, watch } from 'vue';
 export default {
-   setup() {
+   props: { //propsはReadonly
+      title: String
+   },
+   setup(props, context) {
       const data = reactive({
          name: 'abc',
          age: 16,
@@ -32,7 +35,14 @@ export default {
       });
       function changeAge(val) {
         data.age += val
+        console.log(props.title);
       }
+
+      watch(()=>props.title, (newTitle, oldTitle)=>{
+           console.log(props, oldTitle);
+           context.emit('title-changed')
+      });
+
       function changeYear(val) {
         data.year = data.year + val
       }
