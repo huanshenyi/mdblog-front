@@ -22,3 +22,9 @@ yarn test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### UIプラグインbulmaのドキュメント
+
+https://bulma.io/documentation/ en
+http://lqzh.me/bulma-docs-cn/documentation/columns/basics/ cn
