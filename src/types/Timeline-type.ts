@@ -1,4 +1,4 @@
-export type Period1 = {
+export type Periodtest = {
     id:number,
     tagName: String,
     status: boolean

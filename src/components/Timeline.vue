@@ -8,7 +8,7 @@
              :key="index"
              >{{ period }}</a>
         </p>
-        <a v-for="post in posts" :key="post.id" class="panel-block">
+        <a data-test="post" v-for="post in posts" :key="post.id" class="panel-block">
             <div>
                 <a href="">{{ post.title }}</a>
                 <div>{{ post.created.format("yyyy-MM-dd") }}</div>
