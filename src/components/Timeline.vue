@@ -8,12 +8,7 @@
              :key="index"
              >{{ period }}</a>
         </p>
-        <a data-test="post" v-for="post in posts" :key="post.id" class="panel-block">
-            <div>
-                <a href="">{{ post.title }}</a>
-                <div>{{ post.created.format("yyyy-MM-dd") }}</div>
-            </div>
-        </a>
+        <TimelinePost  v-for="post in posts" :key="post.id" :post="post" />
     </nav>  
 </template>
 
@@ -22,11 +17,12 @@ import { defineComponent, ref, computed } from 'vue';
 import { Period, Post } from "@/types";
 import { todayPost, thisWeek, thisMonth } from "@/mock";
 import moment from "moment";
+import TimelinePost from "./TimelinePost.vue";
 
 export default defineComponent({
     name: 'timeline',
     components: {
-       
+       TimelinePost
     },
     setup(){
       // 記事のタグバー用リスト
