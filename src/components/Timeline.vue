@@ -19,12 +19,14 @@ import { todayPost, thisWeek, thisMonth } from "@/mock";
 import moment from "moment";
 import TimelinePost from "./TimelinePost.vue";
 
+const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
+
 export default defineComponent({
     name: 'timeline',
     components: {
        TimelinePost
     },
-    setup(){
+    async setup(){
       // 記事のタグバー用リスト
       const periods: Period[] = ["今日", "今週", "今月"];
       const selectedPeriod = ref<Period>("今日");
@@ -33,6 +35,8 @@ export default defineComponent({
       const setPeriod = (period:Period)=> {
           selectedPeriod.value = period
       }
+      // 2ミリ秒を待つ
+      await delay(2000);
 
       // show Data
       // const posts: Post[] = [todayPost, thisWeek, thisMonth];

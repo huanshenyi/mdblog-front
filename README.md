@@ -28,3 +28,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 https://bulma.io/documentation/ en
 http://lqzh.me/bulma-docs-cn/documentation/columns/basics/ cn
+
+### Suspenseのドキュメント
+```
+https://qiita.com/ryo2132/items/7225d60768a15dabfb9f
+```
