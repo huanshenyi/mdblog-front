@@ -4,6 +4,7 @@ import { nextTick } from 'vue';
 
 describe('Timeline.vue', () => {
   it('Timelineのaタグの存在テスト', () => {
+    nextTick();
     const wrapper = mount(Timeline, {});
     expect(wrapper.findAll("[data-test='period']")).toHaveLength(3);
   })
