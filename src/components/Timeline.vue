@@ -38,14 +38,19 @@ export default defineComponent({
       }
 
       const store = useStore();
-      console.log(store.getState());
+    //   console.log(store.getState());
+    // acc == []
+      const allPosts = store.getState().posts.ids.reduce<Post[]>((acc, id)=>{
+          const post = store.getState().posts.all[id];
+          return acc.concat(post);
+      }, [])
 
       // 2ミリ秒を待つ
       await delay(2000);
 
       // show Data
       // const posts: Post[] = [todayPost, thisWeek, thisMonth];
-      const posts = computed(() => [todayPost, thisWeek, thisMonth].filter(post=>{
+      const posts = computed(() => allPosts.filter(post=>{
           if(selectedPeriod.value === "今日" &&
              post.created.isAfter(moment().subtract(1, "day"))){
               return true;

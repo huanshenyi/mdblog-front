@@ -18,14 +18,14 @@ import { Post } from "@/types";
 
  const initialPostsState = (): PostsState => ({
      ids: [
-        // todayPost.id.toString(),
-        // thisWeek.id.toString(),
-        // thisMonth.id.toString(),
+        todayPost.id.toString(),
+        thisWeek.id.toString(),
+        thisMonth.id.toString(),
      ],
      all: {
-        // [todayPost.id]:todayPost,
-        // [thisWeek.id]: thisWeek,
-        // [thisMonth.id]: thisMonth
+        [todayPost.id]:todayPost,
+        [thisWeek.id]: thisWeek,
+        [thisMonth.id]: thisMonth
      },
      loaded: false
  })
