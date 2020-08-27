@@ -38,6 +38,10 @@ export default defineComponent({
       }
 
       const store = useStore();
+
+      if (!store.getState().posts.loaded){
+          await store.fetchPosts();
+      }
     //   console.log(store.getState());
     // acc == []
       const allPosts = store.getState().posts.ids.reduce<Post[]>((acc, id)=>{
@@ -46,7 +50,7 @@ export default defineComponent({
       }, [])
 
       // 2ミリ秒を待つ
-      await delay(2000);
+      //   await delay(2000);
 
       // show Data
       // const posts: Post[] = [todayPost, thisWeek, thisMonth];
