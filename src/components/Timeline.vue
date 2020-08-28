@@ -20,7 +20,7 @@ import moment from "moment";
 import TimelinePost from "./TimelinePost.vue";
 import { useStore } from "@/store"
 
-const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
+// const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
 
 export default defineComponent({
     name: 'timeline',

@@ -1,16 +1,38 @@
 import { shallowMount, mount } from '@vue/test-utils'
-import Timeline from '@/components/Timeline.vue'
+import Home from '@/views/Home.vue'
 import { nextTick } from 'vue';
+import flushPromises from "flush-promises"
+import * as mockData from "@/mock";
 
-describe('Timeline.vue', () => {
-  it('Timelineのaタグの存在テスト', () => {
-    nextTick();
-    const wrapper = mount(Timeline, {});
+//jestでmockデータを取得
+jest.mock("axios", ()=> ({
+  get: (url:string) => ({
+    data: [mockData.todayPost, mockData.thisWeek, mockData.thisMonth],
+  })
+}))
+
+describe('Home.vue', () => {
+
+  // it('Home非同期の処理1', () => {
+  //   const wrapper = mount({
+  //     template: `<Suspense><Home/></Suspense>`
+  //   });
+  // })
+  
+  it('ロード動画テスト', () => {
+    const wrapper = mount(Home, {});
+    expect(wrapper.find("[data-test='progress']").exists()).toBe(true);
+  })
+
+  it('Homeのaタグの存在テスト', async () => {
+    const wrapper = mount(Home, {});
+    await flushPromises();
     expect(wrapper.findAll("[data-test='period']")).toHaveLength(3);
   })
 
-  it("Timelineのaタグの切替機能のテスト", async () => {
-    const wrapper = mount(Timeline, {});
+  it("Homeのaタグの切替機能のテスト", async () => {
+    const wrapper = mount(Home, {});
+    await flushPromises();
     const $today = wrapper.findAll("[data-test='period']")[0];
     expect($today.classes()).toContain("is-active");
 
@@ -30,8 +52,9 @@ describe('Timeline.vue', () => {
 
   });
 
-  it('Timelineのpostのデータロードテスト', async () => {
-    const wrapper = mount(Timeline, {});
+  it('Homeのpostのデータロードテスト', async () => {
+    const wrapper = mount(Home);
+    await flushPromises();
     expect(wrapper.findAll("[data-test='post']")).toHaveLength(1);
 
     const $thisWeek = wrapper.findAll("[data-test='period']")[1];
