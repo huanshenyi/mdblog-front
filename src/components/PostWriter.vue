@@ -15,10 +15,16 @@
         <div class="columns">
             <div class="column is-one-half">
                 write
-                <div contenteditable id="markdown" ref="contenteditable"/>
+                <div
+                 contenteditable
+                 id="markdown"
+                 ref="contenteditable"
+                 @input="handleEdit"
+                 />
             </div>
             <div class="column is-one-half">
                 show
+                {{ markdown }}
             </div>
         </div>
     </div>
@@ -40,13 +46,19 @@ export default defineComponent({
     setup(props){
       const title = ref(props.post.title);
       const contenteditable = ref<null | HTMLDivElement>(null);
+      const markdown = ref(props.post.markdown);
 
-      console.log(contenteditable.value);
+      const handleEdit = ()=>{
+          //@ts-ignore
+          markdown.value = contenteditable.value.innerText;
+      }
 
       onMounted(() => {
-        console.log(contenteditable.value);  
+        //@ts-ignore
+        contenteditable.value.innerText = markdown.value
       })
-      return { title, contenteditable };
+
+      return { title, contenteditable, handleEdit, markdown};
     }
 })
 </script>
