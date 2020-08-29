@@ -11,11 +11,21 @@
                 </div>
             </div>
         </div>
+        <!-- write && show-->
+        <div class="columns">
+            <div class="column is-one-half">
+                write
+                <div contenteditable id="markdown" ref="contenteditable"/>
+            </div>
+            <div class="column is-one-half">
+                show
+            </div>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import { Post } from "@/types";
 
 export default defineComponent({
@@ -29,7 +39,14 @@ export default defineComponent({
     },
     setup(props){
       const title = ref(props.post.title);
-      return { title };
+      const contenteditable = ref<null | HTMLDivElement>(null);
+
+      console.log(contenteditable.value);
+
+      onMounted(() => {
+        console.log(contenteditable.value);  
+      })
+      return { title, contenteditable };
     }
 })
 </script>
