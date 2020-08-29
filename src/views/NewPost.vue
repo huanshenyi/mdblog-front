@@ -17,7 +17,7 @@ export default defineComponent({
     const post: Post = {
        id: -1,
        title : "testtitle",
-       markdown: "##vue-test\n zui xin api",
+       markdown: "## vue-test\n zui xin api",
        html: "",
        authorId: 0,
        created: moment(),
