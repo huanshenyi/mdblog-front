@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import axios from "axios"
 import * as mockData from "./mock"
+import "highlight.js/styles/monokai.css"
 
 const delay = (ms: number) => new Promise((res)=>setTimeout(res, ms));
 

@@ -33,7 +33,9 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, watch } from "vue";
 import { Post } from "@/types";
-import { parse } from "marked";
+import { parse, MarkedOptions } from "marked";
+import { highlightAuto } from "highlight.js"
+import debounce from "lodash/debounce";
 
 export default defineComponent({
     name: "PostWriter",
@@ -53,11 +55,19 @@ export default defineComponent({
       const handleEdit = ()=>{
           //@ts-ignore
           markdown.value = contenteditable.value.innerText;
-      }
+      };
 
-      watch(()=> markdown.value, (value) => {
-         html.value = parse(value);
-      }, {immediate: true})
+      const options: MarkedOptions = {
+          highlight: (code:string) => highlightAuto(code).value,
+      }
+      
+      // 入力内容の延時表示
+      const update = debounce((value: string) => {
+          html.value = parse(value, options);
+      }, 450)
+      
+      // immediate: true => レンダリング時に一回実行される
+      watch(()=> markdown.value, (value) => update(value), {immediate: true})
 
       onMounted(() => {
         //@ts-ignore
