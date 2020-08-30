@@ -27,6 +27,14 @@
                 <div v-html="html" />
             </div>
         </div>
+        <!-- 保存 -->
+        <div class="columns">
+            <div class="column">
+                <button class="button is-primary is-pull-right" @click="handleSubmit">
+                    保存   
+                </button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -46,7 +54,7 @@ export default defineComponent({
             required: true
         },
     },
-    setup(props){
+    setup(props, ctx){
       const title = ref(props.post.title);
       const contenteditable = ref<null | HTMLDivElement>(null);
       const markdown = ref(props.post.markdown);
@@ -59,6 +67,18 @@ export default defineComponent({
 
       const options: MarkedOptions = {
           highlight: (code:string) => highlightAuto(code).value,
+      }
+
+      // 入力内容を保存
+      const handleSubmit = () => {
+         // 親コンポネントに渡す
+         const post: Post = {
+             ...props.post,
+             title:title.value,
+             markdown: markdown.value,
+             html: html.value,
+         }
+         ctx.emit("save", post)
       }
       
       // 入力内容の延時表示
@@ -74,7 +94,7 @@ export default defineComponent({
         contenteditable.value.innerText = markdown.value;
       })
 
-      return { title, contenteditable, handleEdit, markdown, html};
+      return { title, contenteditable, handleEdit, markdown, html, handleSubmit};
     }
 })
 </script>
