@@ -5,8 +5,7 @@
                 <div class="field">
                     <div class="label">blog title</div>
                     <div class="control">
-                        <input type="text" v-model="title" class="input">
-                        {{title}}
+                        <input data-test="post-title" type="text" v-model="title" class="input">                
                     </div>
                 </div>
             </div>
@@ -14,23 +13,22 @@
         <!-- write && show-->
         <div class="columns">
             <div class="column is-one-half">
-                write
                 <div
                  contenteditable
                  id="markdown"
                  ref="contenteditable"
                  @input="handleEdit"
+                 data-test="markdown"
                  />
             </div>
             <div class="column is-one-half">
-                show
                 <div v-html="html" />
             </div>
         </div>
         <!-- 保存 -->
         <div class="columns">
             <div class="column">
-                <button class="button is-primary is-pull-right" @click="handleSubmit">
+                <button data-test="submit-post" class="button is-primary is-pull-right" @click="handleSubmit">
                     保存   
                 </button>
             </div>
