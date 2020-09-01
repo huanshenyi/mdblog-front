@@ -13,6 +13,5 @@ describe("blogのwriterページのテスト", ()=>{
          wrapper.find<HTMLDivElement>('[data-test="markdown"]').element.innerText = "## test内容";
          wrapper.find<HTMLDivElement>('[data-test="markdown"]').trigger("input");
          wrapper.find("[data-test='submit-post']").trigger("click")
-         console.log(wrapper.emitted().save)
     })
 })
