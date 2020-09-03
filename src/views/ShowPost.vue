@@ -4,7 +4,7 @@
            <PostViewer />
        </template>
        <template #fallback>
-           <progress /> 
+           <Progress /> 
        </template>      
    </Suspense>    
 </template>
