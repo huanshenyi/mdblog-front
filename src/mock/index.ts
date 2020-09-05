@@ -1,6 +1,8 @@
 import moment from 'moment';
 import { Post } from "@/types";
 
+// 日本時間に設定
+moment.locale("ja")
 export const basePost: Post = {
     id: 1,
     title: "テストtitle",

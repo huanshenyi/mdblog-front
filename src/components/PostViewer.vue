@@ -1,8 +1,46 @@
 <template>
-    <router-link :to="to" class="button is-rounded is-link">
-       <i class="fa fa-edit"></i>
+    <section class="container">
+       <div class="columns">
+        <div class="column is-3">
+            <aside class="menu">
+                <!-- タグ追加用 -->
+                <p class="menu-label">タグ</p>
+                 <ul class="menu-list">
+                     <li>
+                         <span class="tag is-primary is-medium">テストタグ</span>
+                     </li>
+                 </ul>
+            </aside>
+        </div>
+        <div class="column is-9">
+            <div class="box content">
+                <article class="post">
+                    <h4> {{post.title}} </h4>
+                    <div class="media">
+                        <!-- Bマーク(消してもいい) -->
+                        <div class="meia-left">
+                            <p class="is-32x32">
+                                <i class="fa fa-bold"></i>
+                            </p>
+                        </div>
+                        <div class="media-content">
+                            <div v-html="post.html"></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>        
+       </div> 
+    </section>
+    <br/>
+    <router-link to="/" class="button is-rounded">
+        キャンセル
+       <i class="fa fa-back"></i>
     </router-link>
-    <div>{{post.title}}</div>
+        <router-link :to="to" class="button is-rounded is-link is-pulled-right">
+        編集    
+       <i class="fa fa-edit"></i>
+    </router-link>    
 </template>
 
 <script lang="ts">

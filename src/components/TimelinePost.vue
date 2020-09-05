@@ -2,7 +2,7 @@
     <router-link :to="to" data-test="post" class="panel-block">
         <div>
             <a>{{ post.title }}</a>
-            <div>{{ post.created.format("yyyy-MM-dd") }}</div>
+            <div>{{ post.created.format("YYYY-MM-DD（dd）") }}</div>
         </div>
     </router-link>
 </template>

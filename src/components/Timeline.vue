@@ -1,15 +1,26 @@
 <template>
-    <nav class="is-primary panel">
-        <p class="panel-tabs">
-            <a
-             :class="[period === selectedPeriod ? 'is-active': ''] "
-             @click="setPeriod(period)"
-             data-test="period" v-for="(period, index) in periods"
-             :key="index"
-             >{{ period }}</a>
-        </p>
-        <TimelinePost  v-for="post in posts" :key="post.id" :post="post" />
-    </nav>  
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-menu">
+               <div class="navbar-start">
+                <a
+                    class="navbar-item"
+                    :class="[period === selectedPeriod ? 'is-active': ''] "
+                    @click="setPeriod(period)"
+                    data-test="period" v-for="(period, index) in periods"
+                    :key="index"
+                    >{{ period }}
+                </a>
+               </div>
+               <div class="navbar-end">
+                 <div class="navbar-item">
+                    <router-link class="button is-info is-alt" to="/posts/new">投稿する</router-link>
+                 </div>
+               </div>
+            </div>
+        </div>
+    </nav>
+    <TimelinePost  v-for="post in posts" :key="post.id" :post="post" />
 </template>
 
 <script lang="ts">

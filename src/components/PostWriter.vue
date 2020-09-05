@@ -25,11 +25,18 @@
                 <div v-html="html" />
             </div>
         </div>
-        <!-- 保存 -->
         <div class="columns">
             <div class="column">
-                <button data-test="submit-post" class="button is-primary is-pull-right" @click="handleSubmit">
+                <!-- 保存ボタン -->
+                <button data-test="submit-post" class="button is-primary is-pulled-right" @click="handleSubmit">
                     保存   
+                </button>
+                <!-- キャンセルボタン -->
+                <button
+                 @click="$router.go(-1)"
+                 class="button is-danger"
+                >
+                 キャンセル
                 </button>
             </div>
         </div>
