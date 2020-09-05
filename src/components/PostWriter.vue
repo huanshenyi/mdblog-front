@@ -14,6 +14,7 @@
         <div class="columns">
             <div class="column is-one-half">
                 <div
+                 class="color-border"
                  contenteditable
                  id="markdown"
                  ref="contenteditable"
@@ -22,7 +23,7 @@
                  />
             </div>
             <div class="column is-one-half">
-                <div v-html="html" />
+                <div v-html="html" class="color-border"/>
             </div>
         </div>
         <div class="columns">
@@ -103,3 +104,11 @@ export default defineComponent({
     }
 })
 </script>
+<style scoped lang="css">
+.color-border{
+   padding: 10px; 
+   border:1px solid #00d1b2 ;
+   border-radius: 5px;
+   height: 500px;
+}
+</style>

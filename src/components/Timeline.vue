@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar is-primary">
+    <nav class="navbar is-white">
         <div class="container">
             <div class="navbar-menu">
                <div class="navbar-start">
@@ -14,7 +14,7 @@
                </div>
                <div class="navbar-end">
                  <div class="navbar-item">
-                    <router-link class="button is-info is-alt" to="/posts/new">投稿する</router-link>
+                    <router-link class="button is-primary is-alt" to="/posts/new">投稿する</router-link>
                  </div>
                </div>
             </div>
