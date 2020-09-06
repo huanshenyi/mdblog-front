@@ -109,6 +109,8 @@ export default defineComponent({
    padding: 10px; 
    border:1px solid #00d1b2 ;
    border-radius: 5px;
-   height: 500px;
+   height: 600px;
+   overflow:scroll;
+   overflow-x:hidden;
 }
 </style>

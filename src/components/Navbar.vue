@@ -14,34 +14,43 @@
                  <div class="navbar-item">
                    <div class="field is-grouped">
                        <!-- 新規アカウント追加 -->
-                       <div class="control">
-                           <router-link to="/register" class="button is-small">
+                       <p class="control">
+                           <button class="button is-small" @click="modal.showModal">
                              <span class="icon">
                                  <i class="fa fa-user-plus"></i>
                              </span>
-                             <span>登録</span>
-                           </router-link>
-                       </div>
+                             <span>新規登録</span>
+                           </button>
+                       </p>
                        <!-- ログイン -->
-                       <div class="control">
-                           <router-link to="/login" class="button is-small is-link">
+                       <p class="control">
+                           <button class="button is-small is-link">
                              <span class="icon">
                                  <i class="fa fa-user"></i>
                              </span>
                              <span>ログイン</span>
-                           </router-link>
-                       </div>                       
+                           </button>
+                       </p>                       
                    </div>
                  </div>
              </div>
           </div>
       </div>
+      <teleport to="#modal" v-if="modal.visible">
+          <!-- コンポネント追加(動的のも可能) -->
+          ログイン
+      </teleport>
     </nav>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue';
+import { useModal } from "@/utils/useModal";
+
 export default defineComponent({
     name: "Navbar",
-    components: {}
+    components: {},
+    setup() {
+        return { modal: useModal() }
+    }
 })
 </script>
