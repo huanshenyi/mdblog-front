@@ -38,17 +38,20 @@
       </div>
       <teleport to="#modal" v-if="modal.visible">
           <!-- コンポネント追加(動的のも可能) -->
-          ログイン
+          <Signup />
       </teleport>
     </nav>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useModal } from "@/utils/useModal";
+import Signup from "@/views/Signup.vue";
 
 export default defineComponent({
     name: "Navbar",
-    components: {},
+    components: {
+        Signup
+    },
     setup() {
         return { modal: useModal() }
     }

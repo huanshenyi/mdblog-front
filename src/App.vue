@@ -1,17 +1,13 @@
 <template>
+  <!-- Navbarにあるteleportの内容を呼び出してます -->
   <div class="modal" :style="style">
     <div class="modal-background"></div>
-    <div class="model-content">
+    <div class="modal-content">
       <div id="modal"></div>
     </div>
     <button class="modal-close is-large" @click="modal.hideModal">
     </button>
   </div>
-
-  <FormInput
-   type="text"
-   name="ユーザーネーム"
-   v-model="username" :error="usernameStatus.message"/>
    
   <NavBar/>
   <section class="section">
@@ -36,24 +32,18 @@ export default defineComponent({
   },
   setup(){
      const modal = useModal();
-     const username = ref("username");
 
-     //検証ルール
-     const usernameStatus = computed<Status>(() => {
-       return validate(username.value, [
-         required(),
-         length({min:5, max:10})
-         ]);
-     })
      const style = computed( () => ({
        display: modal.visible.value ? "block" : "none",
      }));
 
-     return { modal, style, username, usernameStatus}
+     return { modal, style }
   }
 })
 </script>
 
-<style>
-
+<style scoped>
+.modal-content{
+  top: 10%;
+}
 </style>
