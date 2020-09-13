@@ -50,5 +50,5 @@ export function validate(value: string, validators:Validator[]):Status {
             }
         }
     }
-    return {valid: false}
+    return {valid: true}
 }

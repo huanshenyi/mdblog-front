@@ -13,6 +13,15 @@ export interface Post {
     created: Moment
 }
 
-export {
-    Periodtest
+export interface User {
+    id: number,
+    username: string,
+    email?: string,
+    password: string,
+    password2?: string,
+    rule?: string,
 }
+
+// export {
+//     Periodtest
+// }

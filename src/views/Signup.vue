@@ -1,5 +1,5 @@
 <template>
-   <form>
+   <form @submit.prevent="handelSubmit">
     <!-- ログイン用のフォーム -->
     <FormInput type="text" name="ユーザーネーム" v-model="username" :error="usernameStatus.message" />
     <FormInput type="text" name="メールアドレス" v-model="email" :error="emailStatus.message" />
@@ -20,8 +20,11 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
-import FormInput from "@/components/FormInput.vue"
-import { Status, validate, required, length } from "@/utils/validators.ts"
+import FormInput from "@/components/FormInput.vue";
+import { Status, validate, required, length } from "@/utils/validators.ts";
+import { User } from "@/types";
+import { useStore } from "@/store";
+import { useModal } from "@/utils/useModal";
 
 export default defineComponent({
     name: "Signup",
@@ -29,6 +32,8 @@ export default defineComponent({
         FormInput
     },
     setup() {
+     const store = useStore();
+     const modal = useModal();
      const rule = ref("user");
 
      // 検証用   
@@ -62,7 +67,23 @@ export default defineComponent({
          required(),
          length({min:5, max:10})
          ]);
-     })          
+     })
+
+     const handelSubmit = async(e:any) => {
+         if(password.value === password.value){
+            //TODO 一致しないのアラートを出す。
+            return;
+         }
+         const user: User = {
+            id: -1,
+            username:username.value,
+            password:password.value,
+            email: email.value,
+            rule: rule.value,
+         };
+         store.createUser(user);
+         modal.hideModal();
+     }         
 
      return { 
          username, usernameStatus,

@@ -22,7 +22,6 @@ import  { defineComponent, computed, ref } from 'vue';
 import NavBar from "@/components/Navbar.vue";
 import { useModal } from "@/utils/useModal.ts";
 import FormInput from "@/components/FormInput.vue";
-import { Status, validate, required, length} from "@/utils/validators.ts";
 
 export default defineComponent({
   name: 'App',
