@@ -9,11 +9,22 @@
           <div class="navbar-menu" id="topNav">
              <div class="navbar-start">
                  <router-link class="navbar-item" to="/">ブログ</router-link>
+                 <!-- ナビバーのキーワード検索インプット -->
+                 <div class="navbar-item">
+                    <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input is-rounded is-small" type="text" placeholder="キーワードを入力">
+                        <span class="icon is-small is-left">
+                          <i class="fa fa-search"></i>
+                        </span>
+                    </p>
+                    </div>               
+                 </div>
              </div>
              <div class="navbar-end">
                  <div class="navbar-item">
                    <div class="field is-grouped">
-                       <!-- 新規アカウント追加 -->
+                       <!-- 新規アカウント追加ボタン -->
                        <p class="control">
                            <button class="button is-small" @click="modal.showModal">
                              <span class="icon">
@@ -22,7 +33,7 @@
                              <span>新規登録</span>
                            </button>
                        </p>
-                       <!-- ログイン -->
+                       <!-- ログインボタン -->
                        <p class="control">
                            <button class="button is-small is-link">
                              <span class="icon">

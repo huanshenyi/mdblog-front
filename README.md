@@ -34,3 +34,9 @@ http://lqzh.me/bulma-docs-cn/documentation/columns/basics/ cn
 ```
 https://qiita.com/ryo2132/items/7225d60768a15dabfb9f
 ```
+
+### 現在使用するiconドキュメント
+
+```
+https://fontawesome.com/icons/home
+```
