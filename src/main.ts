@@ -19,7 +19,7 @@ axios.get = async (url:string) => {
     }
 }
 //@ts-ignore
-axios.post = async(url:string, payload: Post) => {
+axios.post = async(url:string, payload: any) => {
    if (url === "/posts") {
        await delay(1000);
        const id = uuidv4();
@@ -27,6 +27,14 @@ axios.post = async(url:string, payload: Post) => {
            data: { ...payload, id }
        })
    }
+   if (url === "/users") {
+    await delay(1000);
+    const id = uuidv4();
+    const {id: oldId, password, ...rest} = payload;
+    return Promise.resolve({
+        data: { ...rest, id }
+    })
+}
 }
 
 //@ts-ignore

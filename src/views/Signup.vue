@@ -49,7 +49,7 @@ export default defineComponent({
      const emailStatus = computed<Status>(() => {
        return validate(email.value, [
          required(),
-         length({min:5, max:10})
+         length({min:5, max:40})
          ]);
      })
 
@@ -57,7 +57,7 @@ export default defineComponent({
      const passwordStatus = computed<Status>(() => {
        return validate(password.value, [
          required(),
-         length({min:5, max:10})
+         length({min:5, max:20})
          ]);
      })
 
@@ -65,12 +65,12 @@ export default defineComponent({
      const password2Status = computed<Status>(() => {
        return validate(password2.value, [
          required(),
-         length({min:5, max:10})
+         length({min:5, max:20})
          ]);
      })
 
      const handelSubmit = async(e:any) => {
-         if(password.value === password.value){
+         if(password.value !== password2.value){
             //TODO 一致しないのアラートを出す。
             return;
          }
@@ -90,7 +90,8 @@ export default defineComponent({
          email, emailStatus,
          password, passwordStatus,
          password2, password2Status,
-         rule
+         rule,
+         handelSubmit,
          }
     }
 })

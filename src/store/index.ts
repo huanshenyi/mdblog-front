@@ -17,6 +17,20 @@ import axios from "axios";
      loaded: boolean;
  }
 
+ interface LoginUserState {
+     ids: string[];
+     all:Record<string, Post>;
+     loaded: boolean;
+     currentUserId?:string;
+ }
+
+ const initialLoginUserState = ():LoginUserState => ({
+    ids: [],
+    all: {},
+    loaded: false,
+    currentUserId: undefined
+ })
+
  const initialPostsState = (): PostsState => ({
      ids: [
         // todayPost.id.toString(),
@@ -32,11 +46,13 @@ import axios from "axios";
  })
 
 interface State {
+    loginUser: LoginUserState;
     posts: PostsState;
 }
 
 const initialState = (): State => ({
     posts: initialPostsState(),
+    loginUser: initialLoginUserState(),
 })
 
 class Store {
@@ -77,7 +93,11 @@ class Store {
 
     // 新規アカウント
     async createUser(user:User) {
-       
+       const response = await axios.post<Post>("/users", user);
+       this.state.loginUser.all[response.data.id] = response.data;
+       this.state.loginUser.ids.push(response.data.id.toString());
+       this.state.loginUser.currentUserId = response.data.id.toString();
+       console.log(this.state);   
     }
 }
 
