@@ -46,7 +46,7 @@ import axios from "axios";
  })
 
 interface State {
-    loginUser: LoginUserState;
+    loginUser: LoginUserState; //ログインしたユーザーの情報
     posts: PostsState;
 }
 
@@ -98,6 +98,12 @@ class Store {
        this.state.loginUser.ids.push(response.data.id.toString());
        this.state.loginUser.currentUserId = response.data.id.toString();
        console.log(this.state);   
+    }
+
+    // ログアウト
+    async signOut(){
+        this.state.loginUser.currentUserId =  undefined;
+        console.log("実行")
     }
 }
 
