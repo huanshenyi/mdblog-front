@@ -6,6 +6,7 @@
                  <!-- ホームページののロゴ --> 
                  <img src="/static/logo/logo.png" alt="">
               </router-link>
+              <div class="navbar-item"></div>
           </div>
           <div class="navbar-menu" id="topNav">
              <div class="navbar-start">
@@ -130,5 +131,6 @@ export default defineComponent({
 nav{
     background: #fff;
     border-bottom: 1px solid #f1f1f1;
+    box-shadow: 2px 2px 5px  #f1f1f1;
 }
 </style>

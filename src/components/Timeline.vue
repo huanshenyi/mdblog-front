@@ -1,6 +1,9 @@
 <template>
-    <nav class="navbar is-white">
-        <div class="container">
+    <div class="columns">
+        <div class="column is-four-fifths">
+          <!-- タイムライン -->  
+          <nav class="navbar is-white">
+          <div class="container">
             <div class="navbar-menu">
                <div class="navbar-start">
                 <a
@@ -17,10 +20,16 @@
                     <router-link class="button is-primary is-alt" to="/posts/new">投稿する</router-link>
                  </div>
                </div>
+             </div>
             </div>
+           </nav>
+           <!-- ブログリスト --> 
+           <TimelinePost  v-for="post in posts" :key="post.id" :post="post" />
         </div>
-    </nav>
-    <TimelinePost  v-for="post in posts" :key="post.id" :post="post" />
+        <div class="column is-one-fifth">
+            広告欄追加(card使うといい)
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -86,4 +95,16 @@ export default defineComponent({
 
 <style scope>
 
+.navbar > .container .navbar-menu, .container > .navbar .navbar-menu{
+ margin-right: 0px;  /* ボタンと枠の間の距離をリセット */
+}
+.navbar{
+    border: 1px solid hsla(0,0%,59.2%,.1);
+}
+.is-four-fifths{
+    padding-right: 10px;
+}
+.is-one-fifth{
+
+}
 </style>
