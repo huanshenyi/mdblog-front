@@ -1,20 +1,23 @@
 <template>
-    <nav class="navbar is-primary topNav">
+    <nav class="navbar is-white topNav">
       <div class="container">
           <div class="navbar-brand">
               <router-link class="navbar-item" to="/">
-                 <i class="fa fa-home"></i>
+                 <!-- ホームページののロゴ --> 
+                 <img src="/static/logo/logo.png" alt="">
               </router-link>
           </div>
           <div class="navbar-menu" id="topNav">
              <div class="navbar-start">
                  <!-- ナビバーのタイトル -->
-                 <router-link class="navbar-item" to="/">ブログ</router-link>
+                 <!-- <router-link class="navbar-item" to="/">ブログ</router-link> -->
                  <!-- 記事か書籍かの機能選択用の空欄 -->
-                 <div class="navbar-item"></div>
-                 <div class="navbar-item"></div>
-                 <div class="navbar-item"></div>
-                 <div class="navbar-item"></div>
+                 <div class="navbar-item">ミニブック</div>
+                 <div class="navbar-item">イベント</div>
+                 <div class="navbar-item">スレッド</div>
+                 <div class="navbar-item">未定</div>
+             </div>
+             <div class="navbar-end">
                  <!-- ナビバーのキーワード検索インプット -->
                  <div class="navbar-item">
                     <div class="field">
@@ -26,8 +29,10 @@
                     </p>
                     </div>               
                  </div>
-             </div>
-             <div class="navbar-end">
+                 <!-- 場所取り、今後機能実装かもstart -->
+                 <div class="navbar-item"></div>
+                 <div class="navbar-item"></div>
+                 <!-- 場所取り、今後機能実装かもend -->
                  <div class="navbar-item">
                    <div class="field is-grouped" v-if="auth">
                        <!-- ユーザー情報表示欄 -->
@@ -121,3 +126,9 @@ export default defineComponent({
     }
 })
 </script>
+<style scoped>
+nav{
+    background: #fff;
+    border-bottom: 1px solid #f1f1f1;
+}
+</style>
