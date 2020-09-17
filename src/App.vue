@@ -45,4 +45,7 @@ export default defineComponent({
 .modal-content{
   top: 10%;
 }
+.section{
+  /* background-color: #f4f5f5; */
+}
 </style>

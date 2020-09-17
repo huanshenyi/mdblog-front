@@ -87,7 +87,7 @@
     </nav>
 </template>
 <script lang="ts">
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, ref, markRaw } from 'vue';
 import { useModal } from "@/utils/useModal";
 import Signup from "@/views/Signup.vue";
 import Signin from "@/views/Signin.vue";
@@ -107,11 +107,11 @@ export default defineComponent({
         const auth = computed(() => store.getState().loginUser.currentUserId);
 
         const signup = () => {
-            component.value = Signup;
+            component.value = markRaw(Signup);
             modal.showModal();
         }
         const signin = () => {
-            component.value = Signin;
+            component.value = markRaw(Signin);
             modal.showModal();
         }
         const signout = async() => {

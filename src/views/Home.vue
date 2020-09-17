@@ -23,7 +23,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scope>
 
 </style>
 
