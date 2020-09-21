@@ -27,7 +27,7 @@
            <TimelinePost  v-for="post in posts" :key="post.id" :post="post" />
         </div>
         <div class="column is-one-fifth">
-            広告欄追加(card使うといい)
+            <UserRanking/>
         </div>
     </div>
 </template>
@@ -37,15 +37,18 @@ import { defineComponent, ref, computed } from 'vue';
 import { Period, Post } from "@/types";
 import { todayPost, thisWeek, thisMonth } from "@/mock";
 import moment from "moment";
-import TimelinePost from "./TimelinePost.vue";
 import { useStore } from "@/store"
+
+import TimelinePost from "./TimelinePost.vue";
+import UserRanking from "@/components/home/UserRanking.vue";
 
 // const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
 
 export default defineComponent({
     name: 'timeline',
     components: {
-       TimelinePost
+       TimelinePost,
+       UserRanking
     },
     async setup(){
       // 記事のタグバー用リスト
