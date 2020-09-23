@@ -2,7 +2,7 @@
     <div class="card">
         <header class="card-header">
           <p class="card-header-title">
-              作者ランキング
+              (icon必要)作者ランキング
           </p>
         </header>
         <div class="card-content">

@@ -1,6 +1,6 @@
 <template>
     <div class="columns">
-        <div class="column is-four-fifths">
+        <div class="column is-three-quarters">
           <!-- タイムライン -->  
           <nav class="navbar is-white">
           <div class="container">
@@ -26,8 +26,9 @@
            <!-- ブログリスト --> 
            <TimelinePost  v-for="post in posts" :key="post.id" :post="post" />
         </div>
-        <div class="column is-one-fifth">
+        <div class="column is-one-quarter">
             <UserRanking/>
+            <AuthCard/>
         </div>
     </div>
 </template>
@@ -41,6 +42,7 @@ import { useStore } from "@/store"
 
 import TimelinePost from "./TimelinePost.vue";
 import UserRanking from "@/components/home/UserRanking.vue";
+import AuthCard from "@/components/home/AuthCard.vue";
 
 // const delay = (ms:number) => new Promise(res => setTimeout(res, ms));
 
@@ -48,7 +50,8 @@ export default defineComponent({
     name: 'timeline',
     components: {
        TimelinePost,
-       UserRanking
+       UserRanking,
+       AuthCard
     },
     async setup(){
       // 記事のタグバー用リスト
