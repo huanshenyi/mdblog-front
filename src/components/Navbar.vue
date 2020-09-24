@@ -19,6 +19,9 @@
                  <div class="navbar-item">未定</div>
              </div>
              <div class="navbar-end">
+                 <div class="navbar-item">
+                   <Dropdown/>
+                 </div>
                  <!-- ナビバーのキーワード検索インプット -->
                  <div class="navbar-item">
                     <div class="field">
@@ -99,11 +102,14 @@ import Signup from "@/views/Signup.vue";
 import Signin from "@/views/Signin.vue";
 import { useStore } from "@/store";
 
+import Dropdown from "@/components/global/Dropdown.vue";
+
 export default defineComponent({
     name: "Navbar",
     components: {
         // Signup,
         // Signin
+        Dropdown
     },
     setup() {
         const component = ref();

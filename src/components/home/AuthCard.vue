@@ -17,9 +17,9 @@
              </div>
         </div>
         <div class="card-footer">
-           <div class="card-footer-item">Save</div>
-           <div class="card-footer-item">Save</div>
-           <div class="card-footer-item">Save</div>
+           <div class="card-footer-item">記事数</div>
+           <div class="card-footer-item">book数</div>
+           <div class="card-footer-item">いいねの数</div>
         </div>
     </div>
 </template>
