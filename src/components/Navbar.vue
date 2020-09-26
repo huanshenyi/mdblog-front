@@ -20,7 +20,11 @@
              </div>
              <div class="navbar-end">
                  <div class="navbar-item">
-                   <Dropdown/>
+                   <Dropdown :title="`username`">
+                     <DropdownItem><a href="#" class="dropdown-item">プロフィール</a></DropdownItem>
+                     <DropdownItem disabled><a href="#" class="dropdown-item">記事</a></DropdownItem>
+                     <DropdownItem><a href="#" class="dropdown-item">ログアウト</a></DropdownItem>
+                   </Dropdown>    
                  </div>
                  <!-- ナビバーのキーワード検索インプット -->
                  <div class="navbar-item">
@@ -103,13 +107,15 @@ import Signin from "@/views/Signin.vue";
 import { useStore } from "@/store";
 
 import Dropdown from "@/components/global/Dropdown.vue";
+import DropdownItem from "@/components/global/DropdownItem.vue";
 
 export default defineComponent({
     name: "Navbar",
     components: {
         // Signup,
         // Signin
-        Dropdown
+        Dropdown,
+        DropdownItem,
     },
     setup() {
         const component = ref();

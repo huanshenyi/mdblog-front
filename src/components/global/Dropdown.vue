@@ -1,6 +1,6 @@
 <template>
     <!-- プルダウンコンポネント -->
-    <div class="dropdown is-active">
+    <div class="dropdown is-active" ref="dropdownRef">
     <div class="dropdown-trigger">
         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click.prevent="showitem">
             <span>{{title}}</span>
@@ -10,43 +10,52 @@
         </button>
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu" v-if="show">
-        <div class="dropdown-content">
-        <a href="#" class="dropdown-item">
-            マイページ
-        </a>
-        <a class="dropdown-item">
-            下書一覧
-        </a>
-        <a href="#" class="dropdown-item">
-           ミニブック
-        </a>
-        <hr class="dropdown-divider">
-        <a href="#" class="dropdown-item">
-            ログアウト
-        </a>
-        </div>
+        <ul class="dropdown-content">
+            <slot></slot>
+        </ul>
     </div>
     </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref} from 'vue'
+import { defineComponent, ref, watch } from 'vue';
+import useClickOutside from '@/utils/useClickOutside';
+
 export default defineComponent({
     name: "Dropdown",
+    components: {
+        
+    },
     props: {
      title: {
           type: String,
-          require: false,
+          require: true,
           default: ()=>{
-              return "defaultTitle"
+              return ""
           }
       },
     },
     setup(props, ctx){
        const show = ref(false);
+       const dropdownRef = ref<null | HTMLElement>(null);
+
        const showitem = ()=>{
           show.value = !show.value
        }
-       return { show, showitem}
+
+       const isClickOutside = useClickOutside(dropdownRef)
+       if(show.value && isClickOutside.value) {
+          show.value = false
+       }
+       watch(isClickOutside, ()=>{
+        if(show.value && isClickOutside.value) {
+            show.value = false
+        }
+       })
+       return {
+           show,
+           showitem,
+           dropdownRef,
+       }
     }
 })
 </script>
