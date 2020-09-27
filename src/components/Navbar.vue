@@ -13,7 +13,7 @@
                  <!-- ナビバーのタイトル -->
                  <!-- <router-link class="navbar-item" to="/">ブログ</router-link> -->
                  <!-- 記事か書籍かの機能選択用の空欄 -->
-                 <div class="navbar-item">ミニブック</div>
+                 <router-link class="navbar-item" to="/books" :class="[isActive=='books'?'is-active':'']">ミニブック</router-link>
                  <div class="navbar-item">イベント</div>
                  <div class="navbar-item">スレッド</div>
                  <div class="navbar-item">未定</div>
@@ -100,7 +100,7 @@
     </nav>
 </template>
 <script lang="ts">
-import { computed, defineComponent, ref, markRaw } from 'vue';
+import { computed, defineComponent, ref, markRaw, watch,onMounted } from 'vue';
 import { useModal } from "@/utils/useModal";
 import Signup from "@/views/Signup.vue";
 import Signin from "@/views/Signin.vue";
@@ -108,6 +108,7 @@ import { useStore } from "@/store";
 
 import Dropdown from "@/components/global/Dropdown.vue";
 import DropdownItem from "@/components/global/DropdownItem.vue";
+import { useRoute } from 'vue-router';
 
 export default defineComponent({
     name: "Navbar",
@@ -121,6 +122,17 @@ export default defineComponent({
         const component = ref();
         const modal = useModal();
         const store = useStore();
+        const route = useRoute();
+        const isActive = ref<string>("");
+        // ナビバーのボタンのアクティブ表示。
+        watch(route, ()=>{
+           console.log(route.path); 
+           if(route.path === "/books"){
+               isActive.value = "books"
+           }else{
+               isActive.value = "home"
+           }
+        })
 
         const auth = computed(() => store.getState().loginUser.currentUserId);
 
@@ -135,7 +147,7 @@ export default defineComponent({
         const signout = async() => {
             await store.signOut();
         }
-        return { modal, component, signup, signin, signout, auth }
+        return { modal, component, signup, signin, signout, auth, isActive }
     }
 })
 </script>
@@ -144,5 +156,8 @@ nav{
     background: #fff;
     border-bottom: 1px solid #f1f1f1;
     box-shadow: 2px 2px 5px  #f1f1f1;
+}
+.is-active{
+    color: #148cee  !important;;
 }
 </style>

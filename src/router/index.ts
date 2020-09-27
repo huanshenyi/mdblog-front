@@ -28,6 +28,11 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       requiresAuth: true,
     }
+  },
+  {
+    path: '/books',
+    name: 'Books',
+   component: () => import('../views/Books.vue') 
   }
 ]
 

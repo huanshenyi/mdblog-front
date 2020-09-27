@@ -11,6 +11,7 @@
     </div>
     <div class="dropdown-menu" id="dropdown-menu" role="menu" v-if="show">
         <ul class="dropdown-content">
+            <!-- DropdownItem用 -->
             <slot></slot>
         </ul>
     </div>
