@@ -22,6 +22,17 @@ export interface User {
     rule?: string,
 }
 
+export interface BookData {
+    poster:string,
+    title:string,
+    desc: string,
+    avatar:string,
+    username:string,
+    selfDescription:string,
+    price:number,
+    message:number,
+    buys: number
+}
 // export {
 //     Periodtest
 // }
