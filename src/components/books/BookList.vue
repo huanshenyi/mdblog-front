@@ -1,6 +1,6 @@
 <template>
     <div class="book-list">
-        <div class="item" v-for="(item, index) in mokeData" :key="index">
+        <div class="item" v-for="(item, index) in mokeData" :key="index" @click="tobookdesc(item.id)">
             <!-- 表紙画像 --> 
             <div class="poster">
                 <img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/449cc29621c44984a04691628381e4c5~tplv-k3u1fbpfcp-zoom-1.image" alt="">
@@ -43,15 +43,18 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, reactive, toRefs } from 'vue';
+import { useRoute, useRouter } from "vue-router";
 import { BookData } from '@/types';
 
 export default defineComponent({
     name: "BookList",
     components: {},
     setup(){
+        const router = useRouter();
         const mokeList = ref([1,2,3])
         const mokeData:BookData[] = reactive([
             {
+            id:1,    
             poster: "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/449cc29621c44984a04691628381e4c5~tplv-k3u1fbpfcp-zoom-1.image",
             title: "Go言語のすべてだぞ",
             desc: "内容補充内容補充内容補充内容補充",
@@ -63,6 +66,7 @@ export default defineComponent({
             buys: 10,
         },
         {
+            id:2,
             poster: "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/449cc29621c44984a04691628381e4c5~tplv-k3u1fbpfcp-zoom-1.image",
             title: "Go言語のすべてだぞ",
             desc: "内容補充内容補充内容補充内容補充",
@@ -74,10 +78,13 @@ export default defineComponent({
             buys: 10,
         }
         ])
-
+        const tobookdesc = (id:number)=>{
+            router.push(`/book/${id}`)
+        };
         return {
             mokeList,
-            mokeData
+            mokeData,
+            tobookdesc
         }
     }
 })
