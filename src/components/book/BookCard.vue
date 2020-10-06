@@ -42,6 +42,13 @@
                     </div>
                 </div>
             </div>
+            <!-- 購入人数 -->
+            <div class="book-bought">
+                <div class="label">
+                    <span>ここにicon欲しい</span>
+                    <span>213人購入</span>
+                </div>
+            </div>            
         </div>
     </div>
 </template>
@@ -171,5 +178,19 @@ export default defineComponent({
     background-color: #fff;
     border: 1px solid #aeb6c0;
     margin-left: 5px;
+}
+.book-bought{
+    display: flex;
+    align-items: center;
+    padding: 8px 22px 8px 15px;
+    border-top: 1px solid #ecf0f3;
+}
+.label{
+    display: inline-flex;
+    align-items: center;
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    flex-shrink: 0;
 }
 </style>
