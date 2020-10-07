@@ -113,4 +113,8 @@ export default defineComponent({
    overflow:scroll;
    overflow-x:hidden;
 }
+h2 { 
+   font-size: medium !important;
+   font-weight: normal !important;
+}
 </style>
