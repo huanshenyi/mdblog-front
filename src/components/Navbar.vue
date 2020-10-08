@@ -21,7 +21,7 @@
              <div class="navbar-end">
                  <div class="navbar-item">
                    <Dropdown :title="`username`">
-                     <DropdownItem><a href="#" class="dropdown-item">プロフィール</a></DropdownItem>
+                     <DropdownItem><a href="#" class="dropdown-item" @click="toProfile(1)">プロフィール</a></DropdownItem>
                      <DropdownItem disabled><a href="#" class="dropdown-item">記事</a></DropdownItem>
                      <DropdownItem><a href="#" class="dropdown-item">ログアウト</a></DropdownItem>
                    </Dropdown>    
@@ -108,7 +108,7 @@ import { useStore } from "@/store";
 
 import Dropdown from "@/components/global/Dropdown.vue";
 import DropdownItem from "@/components/global/DropdownItem.vue";
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 export default defineComponent({
     name: "Navbar",
@@ -123,6 +123,7 @@ export default defineComponent({
         const modal = useModal();
         const store = useStore();
         const route = useRoute();
+        const router = useRouter();
         const isActive = ref<string>("");
         // ナビバーのボタンのアクティブ表示。
         watch(route, ()=>{
@@ -147,7 +148,10 @@ export default defineComponent({
         const signout = async() => {
             await store.signOut();
         }
-        return { modal, component, signup, signin, signout, auth, isActive }
+        const toProfile = (id:number) => {
+           router.push({path:`/user/${id}`})
+        }
+        return { modal, component, signup, signin, signout, auth, isActive, toProfile }
     }
 })
 </script>
