@@ -4,20 +4,22 @@
             <UserCard/>
         </div>
         <div class="column">
-            column
+            <UserRcard/>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from 'vue'
 
 import UserCard from "@/components/user/UserCard.vue";
+import UserRcard from "@/components/user/UserRcard.vue";
 
 export default defineComponent({
     name: "User",
     components:{
-        UserCard
+        UserCard,
+        UserRcard
     },
     setup(){
 
