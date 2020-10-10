@@ -25,18 +25,20 @@
                 <p><span>icon</span>フォロー中のタグ</p>
             </div>
             <div>
-                <span class="tag tagcss">TagLabel</span>
+                <span class="tag tagcss" v-for="(item, key) in moketaglist" :key="key">TagLabel</span>
             </div>
          </div>
     </div>
 </template>
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {defineComponent, ref} from 'vue'
 export default defineComponent({
     name: "UserRcard",
     components:{},
     setup(){
+       const moketaglist = ref([1,2,3,4,5,6,7,8,9,10,11,12]);
 
+       return { moketaglist }
     }
 })
 </script>
