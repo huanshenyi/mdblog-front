@@ -12,9 +12,9 @@ const routes: Array<RouteRecordRaw> = [
     path: '/posts/new',
     name: 'NewPost',
     component: () => import('../views/NewPost.vue'),
-    meta: {
-      requiresAuth: true,
-    }
+    // meta: {
+    //   requiresAuth: true,
+    // }
   },
   {
     path: '/posts/:id',
@@ -25,9 +25,9 @@ const routes: Array<RouteRecordRaw> = [
     path: '/posts/:id/edit',
     name: "EditPost",
     component: () => import('../views/EditPost.vue'),
-    meta: {
-      requiresAuth: true,
-    }
+    // meta: {
+    //   requiresAuth: true,
+    // }
   },
   {
     path: '/books',
@@ -43,6 +43,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/user/:id',
     name: 'User',
     component: () => import('../views/User.vue')
+  },
+  {
+    path: '/channellist',
+    name: 'ChannelList',
+    component: () => import('../views/ChannelList.vue')
   }
 ]
 

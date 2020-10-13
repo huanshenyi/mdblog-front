@@ -20,9 +20,6 @@ yarn build
 yarn test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
 
 ### UIプラグインbulmaのドキュメント
 
@@ -39,4 +36,10 @@ https://qiita.com/ryo2132/items/7225d60768a15dabfb9f
 
 ```
 https://fontawesome.com/icons/home
+```
+
+## ディレクトリ構成
+
+```
+
 ```

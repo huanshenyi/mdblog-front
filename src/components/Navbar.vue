@@ -14,8 +14,8 @@
                  <!-- <router-link class="navbar-item" to="/">ブログ</router-link> -->
                  <!-- 記事か書籍かの機能選択用の空欄 -->
                  <router-link class="navbar-item" to="/books" :class="[isActive=='books'?'is-active':'']">ミニブック</router-link>
+                 <router-link class="navbar-item" to="/channellist" :class="[isActive=='channellist'?'is-active':'']">チャンネル</router-link>
                  <div class="navbar-item">イベント</div>
-                 <div class="navbar-item">スレッド</div>
                  <div class="navbar-item">未定</div>
              </div>
              <div class="navbar-end">
@@ -130,6 +130,8 @@ export default defineComponent({
            console.log(route.path); 
            if(route.path === "/books"){
                isActive.value = "books"
+           }else if(route.path === "/channellist"){
+               isActive.value = "channellist"
            }else{
                isActive.value = "home"
            }
