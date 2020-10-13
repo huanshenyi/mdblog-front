@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="level-right">
-                   <a class="button is-info is-outlined">プロフィールを編集する</a>
+                   <a class="button is-info is-outlined" @click="editorUser">プロフィールを編集する</a>
                 </div>
             </nav>
             </div>
@@ -48,8 +48,19 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useRoute, useRouter } from 'vue-router';
+
 export default defineComponent({
-    
+    name: "UserCard",
+    setup(){
+        const route = useRoute();
+        const router = useRouter();
+        const userId = route.params["id"];
+        const editorUser = ()=>{
+             router.push(`/user/editor/${userId}`);
+        }
+        return { editorUser }
+    }
 })
 </script>
 <style scoped>

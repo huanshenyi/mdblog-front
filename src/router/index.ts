@@ -45,6 +45,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/User.vue')
   },
   {
+    path: '/user/editor/:id',
+    name: 'UserEditor',
+    component: () => import('../views/UserEditor.vue')
+  },
+  {
     path: '/channellist',
     name: 'ChannelList',
     component: () => import('../views/ChannelList.vue')
