@@ -1,0 +1,38 @@
+<template>
+    <div class="main">
+      <div class="titles">
+          <a href="">icon</a>
+          <a href="">username</a>
+          <span>/</span>
+          <span>公開用プロフィール</span>
+      </div>
+    </div>
+</template>
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+    name: "Main",
+    components: {},
+    setup() {
+
+    }
+})
+</script>
+<style scoped>
+.main{
+    flex-grow: 1;
+    min-width: 0;
+    margin-left: 16px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    padding: 16px; 
+}
+.titles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 24px;
+    margin-bottom: 32px;
+}
+</style>
