@@ -57,7 +57,8 @@ export default defineComponent({
         const router = useRouter();
         const userId = route.params["id"];
         const editorUser = ()=>{
-             router.push(`/user/editor/${userId}`);
+            //  router.push(`/user/editor/${userId}`);
+            router.push(`/user/editor/`);
         }
         return { editorUser }
     }

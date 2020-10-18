@@ -2,6 +2,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import { useStore } from "@/store";
 
+import UserEditor from "@/views/UserEditor.vue";
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -45,9 +47,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/User.vue')
   },
   {
-    path: '/user/editor/:id',
+    path: '/user/editor/',
     name: 'UserEditor',
-    component: () => import('../views/UserEditor.vue')
+    component: UserEditor,
+    redirect: "/user/editor/main",
+    children: [
+       {
+        path: "/user/editor/main",
+        name: "Main",
+        component: () => import("../components/userEditor/Main.vue")          
+       },
+       {
+        path: "/user/editor/email",
+        name: "EditorEmail",
+        component: () => import("../components/userEditor/EditorEmail.vue")
+       }
+    ]
   },
   {
     path: '/channellist',

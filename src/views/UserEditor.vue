@@ -2,29 +2,39 @@
     <div class="columns">
          <div class="column is-one-quarter">
              <div class="settings-menu">
-                <div class="menu-item">公開用プロフィール</div>
+                <router-link class="menu-item" to="/user/editor/main">公開用プロフィール</router-link>
                 <div class="menu-item">アカウント</div>
                 <div class="menu-item">パスワード</div>
-                <div class="menu-item">メールアドレスと通知</div>
+                <router-link class="menu-item" to="/user/editor/email">メールアドレスと通知</router-link>
              </div>
          </div>
          <div class="column">
-            <Main/>
+            <!-- <Main/> -->
+            <router-view></router-view>
          </div>
     </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useRoute, useRouter } from "vue-router";
 
-import Main from "@/components/userEditor/Main.vue";
+// import Main from "@/components/userEditor/Main.vue";
+// import EditorEmail from "@/components/userEditor/EditorEmail.vue";
 
 export default defineComponent({
     name: "UserEditor",
     components: {
-        Main
+        // Main,
+        // EditorEmail
     },
     setup(){
-  
+       const active:string = "";
+       const route = useRoute();
+       const router = useRouter();
+       
+       console.log(route.path);
+
+       return {active}
     }
 })
 </script>
