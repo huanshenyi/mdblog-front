@@ -61,6 +61,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "/user/editor/email",
         name: "EditorEmail",
         component: () => import("../components/userEditor/EditorEmail.vue")
+       },
+       {
+         path: "/user/editor/password",
+         name: "EditorPassword",
+         component: () => import("../components/userEditor/EditorPassword.vue")
        }
     ]
   },

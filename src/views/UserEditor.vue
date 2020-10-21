@@ -3,8 +3,7 @@
          <div class="column is-one-quarter">
              <div class="settings-menu">
                 <router-link class="menu-item" to="/user/editor/main">公開用プロフィール</router-link>
-                <div class="menu-item">アカウント</div>
-                <div class="menu-item">パスワード</div>
+                <router-link class="menu-item" to="/user/editor/password">パスワード</router-link>
                 <router-link class="menu-item" to="/user/editor/email">メールアドレスと通知</router-link>
              </div>
          </div>
