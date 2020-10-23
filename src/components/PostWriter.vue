@@ -2,10 +2,17 @@
     <div>
         <div class="columns">
             <div class="column">
+                <!-- 記事のタイトル -->
                 <div class="field">
-                    <div class="label">blog title</div>
+                    <!-- <div class="label">blog title</div> -->
                     <div class="control">
-                        <input data-test="post-title" type="text" v-model="title" class="input">                
+                        <input data-test="post-title" type="text" v-model="title" class="input" placeholder="タイトルを入力してください">            
+                    </div>
+                </div>
+                <!-- 記事のタグ -->
+                <div class="field">
+                    <div class="control">
+                        <input type="text" class="input" placeholder="タグを入力ください">        
                     </div>
                 </div>
             </div>
@@ -28,9 +35,33 @@
         </div>
         <div class="columns">
             <div class="column">
+                <!-- ボタンの切替 -->
+                <div class="dropdown is-up is-pulled-right"
+                 @click="dropdownactive" :class="{'is-active': active}" ref="activeref">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                        <span class="icon is-small">
+                            <i class="fa fa-angle-up" aria-hidden="true"></i>
+                        </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                            下書き保存
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            記事を投稿
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            ミニブック登録
+                        </a>
+                        </div>
+                    </div>
+                </div>
                 <!-- 保存ボタン -->
                 <button data-test="submit-post" class="button is-primary is-pulled-right" @click="handleSubmit">
-                    保存   
+                    下書き保存   
                 </button>
                 <!-- キャンセルボタン -->
                 <button
@@ -50,6 +81,8 @@ import { Post } from "@/types";
 import { parse, MarkedOptions } from "marked";
 import { highlightAuto } from "highlight.js"
 import debounce from "lodash/debounce";
+import AppVue from '@/App.vue';
+import useClickOutside from '@/utils/useClickOutside';
 
 export default defineComponent({
     name: "PostWriter",
@@ -99,8 +132,32 @@ export default defineComponent({
         //@ts-ignore
         contenteditable.value.innerText = markdown.value;
       })
-
-      return { title, contenteditable, handleEdit, markdown, html, handleSubmit};
+      // ボタン選択用のリストをアクティブ化
+      const active = ref(false);
+      const activeref = ref<null | HTMLElement>(null);
+      const isClickOutside = useClickOutside(activeref)
+      const dropdownactive = ()=> {
+        active.value = !active.value;
+      }
+      if(active.value && isClickOutside.value) {
+          active.value = false
+      }
+      watch(isClickOutside, ()=>{
+        if(active.value && isClickOutside.value) {
+            active.value = false
+        }
+      })
+      return { 
+          title, 
+          contenteditable,
+          handleEdit,
+          markdown,
+          html,
+          handleSubmit,
+          dropdownactive,
+          active,
+          activeref
+       };
     }
 })
 </script>
