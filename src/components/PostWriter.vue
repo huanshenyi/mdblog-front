@@ -47,13 +47,13 @@
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu" role="menu">
                         <div class="dropdown-content">
-                        <a href="#" class="dropdown-item">
+                        <a href="#" class="dropdown-item" @click="savereport">
                             下書き保存
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <a href="#" class="dropdown-item" @click="postreport"> 
                             記事を投稿
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <a href="#" class="dropdown-item" @click="registerpost">
                             ミニブック登録
                         </a>
                         </div>
@@ -61,7 +61,7 @@
                 </div>
                 <!-- 保存ボタン -->
                 <button data-test="submit-post" class="button is-primary is-pulled-right" @click="handleSubmit">
-                    下書き保存   
+                    {{buttonValue}}   
                 </button>
                 <!-- キャンセルボタン -->
                 <button
@@ -110,14 +110,20 @@ export default defineComponent({
 
       // 入力内容を保存
       const handleSubmit = () => {
-         // 親コンポネントに渡す
-         const post: Post = {
-             ...props.post,
-             title:title.value,
-             markdown: markdown.value,
-             html: html.value,
-         }
-         ctx.emit("save", post)
+        if (buttonValue.value == '下書き保存') {
+            // 親コンポネントに渡す
+            const post: Post = {
+                ...props.post,
+                title:title.value,
+                markdown: markdown.value,
+                html: html.value,
+            }
+            ctx.emit("save", post)
+        }else if(buttonValue.value == '記事を投稿') {
+            console.log('記事を投稿');
+        }else if(buttonValue.value == 'ミニブック登録'){
+            console.log('ミニブック登録')
+        }
       }
       
       // 入力内容の延時表示
@@ -147,6 +153,18 @@ export default defineComponent({
             active.value = false
         }
       })
+      // ボタン選択の文字変換
+      const buttonValue = ref('記事を投稿');
+      const savereport = ()=>{
+          buttonValue.value = '下書き保存';
+      }
+      const postreport = ()=>{
+          buttonValue.value = "記事を投稿";
+      }
+      const registerpost = ()=>{
+          buttonValue.value = 'ミニブック登録';
+      }
+      
       return { 
           title, 
           contenteditable,
@@ -156,7 +174,11 @@ export default defineComponent({
           handleSubmit,
           dropdownactive,
           active,
-          activeref
+          activeref,
+          buttonValue,
+          savereport,
+          postreport,
+          registerpost
        };
     }
 })
